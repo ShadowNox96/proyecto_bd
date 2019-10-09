@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class="card w-50 offset-3 text-center">
+    <div class="card-header">
+        <h3 class="col">¿Desea eliminar el empleado <b>{{ object.nombres }}</b> ?</h3>
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <form method="post" class="col-md-6 offset-md-3">
+                <!--Este token siempre va a la hora de hacer una peticion http de post -->
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Confirmar</button>
+                <a href="/empleado" class="btn btn-danger">Cancelar</a>
+            </form>
+        </blockquote>
+    </div>
+</div>
+{% endblock %}

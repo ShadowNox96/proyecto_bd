@@ -1,0 +1,33 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h2 class=" col text-center">Lista de categorias de productos</h2>
+<a href="categoria/crear " role="button" class="btn btn-success offset-md-2">Crear categoria</a>
+<table class="table col-md-8 offset-md-2 mt-2">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        <!--Codigo de python -->
+        {% if object_list %}
+        {% for cat in object_list %}
+        <tr>
+            <th scope="row">{{ forloop.counter}}</th>
+            <td>{{ cat.nombre }}</td>
+            <td>{{ cat.descripcion }}</td>
+            <td><a href="{% url 'editarcat' cat.id_categoria %}" class="btn btn-secondary">Editar</a>
+              <a href="{% url 'eliminarcat' cat.id_categoria%}" class="btn btn-danger">Eliminar</a></td>
+            
+        </tr>
+      {% endfor %}
+      {% else %}
+      <div class="alert alert-warning col-md-8 offset-md-2 mt-2">No existen registros</div>
+      {% endif %}
+    </tbody>
+  </table>
+{% endblock %}

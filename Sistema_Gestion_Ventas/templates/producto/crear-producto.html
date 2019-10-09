@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h1 class="h1 col text-center">Crear Producto</h1>
+<form method="POST" class="col-md-8 offset-md-2">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-6">
+            <label for=""><b>Codigo de producto *</b></label>
+            {{form.cod_producto}}
+        </div>
+        <div class=" col-md-6 float-left">
+            <label for=""><b>Nombre del producto *</b></label>
+            {{form.nom_producto}}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <label for=""><b>Descripcion *</b></label>
+            {{form.descripcion}}
+        </div>
+        <div class=" col-md-6 float-left">
+            <label for=""><b>Precio Costo *</b></label>
+            {{form.costo_compra}}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <label for=""><b>Precio Venta *</b></label>
+            {{form.precio_venta}}
+        </div>
+        <div class=" col-md-6 float-left">
+            <label for=""><b>Categoria *</b></label>
+            {{form.id_categoria}}
+        </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-success offset-md-5">Guardar</button>
+    <a href="/producto" class="btn btn-danger">Cancelar</a>
+
+</form>
+
+{% endblock %}

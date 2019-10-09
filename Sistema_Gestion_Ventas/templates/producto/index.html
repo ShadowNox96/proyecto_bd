@@ -1,0 +1,42 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h3 class="h3 col-md-10 offset-md-1 text-center mt-2">Lista de productos</h3>
+    <a href="producto/crear" class="btn btn-success offset-md-1"> Crear Producto</a>
+      <table class="table mt-2 col-md-10 offset-md-1">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Codigo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Costo Compra</th>
+            <th scope="col">Precio Venta</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if object_list %}
+            {% for prod in object_list %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{prod.cod_producto}}</td>
+            <td>{{prod.nom_producto}}</td>
+            <td>{{prod.descripcion}}</td>
+            <td>{{prod.costo_compra}}</td>
+            <td>{{prod.precio_venta}}</td>
+            <td>{{prod.id_categoria}}</td>
+            <td>
+                <a href="{% url 'editarproducto' prod.id_producto %}" class="btn btn-secondary" >Editar</a> 
+                <a href="{% url 'eliminarproducto' prod.id_producto %}" class="btn  btn-danger ">Eliminar</a>
+            </td>
+          </tr>
+          {% endfor %}
+          {% else %}
+          <div class="alert alert-warning col-md-10 offset-md-1 text-center mt-2">No existen productos</div>
+          {% endif %}
+        </tbody>
+      </table>
+
+{% endblock %}
